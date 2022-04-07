@@ -1,3 +1,4 @@
+import os
 class record:
     def __init__(self, name, buy, sell):
         self.buy = buy
@@ -10,5 +11,4 @@ class record:
 
     def recordData(self, profit):
         file1 = open('profits.txt', 'a')
-        file1.write(f"{self.name}: {profit} \n")
-        file1.close()
+        file1.write(f"\n{self.name}: {profit}")
