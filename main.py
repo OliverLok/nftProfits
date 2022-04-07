@@ -1,5 +1,5 @@
 import royalty
-import recordProfift
+import recordProfit
 import cryptocompare as cc
 
 
@@ -11,7 +11,7 @@ def option1():
     totalRoyalty = royalty.royaltyFees(collection)
     totalSellPrice = sellPrice - (sellPrice * totalRoyalty)  # how much you actually got back accounting for fees
     profit = round((totalSellPrice - buyPrice), 4)  # amount made/lost
-    listNFT = recordProfift.record(name, buyPrice, totalSellPrice)
+    listNFT = recordProfit.record(name, buyPrice, totalSellPrice)
     listNFT.recordData(profit)
     return listNFT
 
@@ -32,6 +32,7 @@ def option3():
     for i in range(len(splitnum)):
         x = splitnum[i].split(":")  # splits the list so it seperates the project name from the profit you made
         addedETH += float(x[1])  # adds the profit together
+        #TODO fix blank line at the end of file problem
     print(f"Total Profit in Etherium: {addedETH}")
     ethToUSD = cc.get_price('ETH', currency='USD')  # gets current price of etherium
     temp = ethToUSD.values()  # gets a dictionary of eth in USD
@@ -50,7 +51,6 @@ print("2) How much to break even")
 print("3) Profit List")
 option = input("Please select an option: ")
 if option == "1":
-    print(option)
     option1()
 elif option == "2":
     option2()
