@@ -13,8 +13,7 @@ def option1():
     profit = round((totalSellPrice - buyPrice), 4)  # amount made/lost
     listNFT = recordProfit.record(name, buyPrice, totalSellPrice)
     listNFT.recordData(profit)
-    return listNFT
-
+    option3() 
 
 def option2():
     collection = input("Please type the URL of the collection: ")
@@ -22,6 +21,7 @@ def option2():
     totalRoyalty = royalty.royaltyFees(collection)
     breakEven = round((buyPrice + (buyPrice * totalRoyalty)), 4)
     print(f"You'll break even at {breakEven} ETH ")
+
 
 
 def option3():
@@ -32,8 +32,7 @@ def option3():
     for i in range(len(splitnum)):
         x = splitnum[i].split(":")  # splits the list so it seperates the project name from the profit you made
         addedETH += float(x[1])  # adds the profit together
-        #TODO fix blank line at the end of file problem
-    print(f"Total Profit in Etherium: {addedETH}")
+    print(f"Total Profit in Etherium: {round(addedETH, 4)}")
     ethToUSD = cc.get_price('ETH', currency='USD')  # gets current price of etherium
     temp = ethToUSD.values()  # gets a dictionary of eth in USD
     v = str(*temp)  # removes dict_values and turns it into a string
