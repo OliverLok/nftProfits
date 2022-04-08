@@ -13,7 +13,8 @@ def option1():
     profit = round((totalSellPrice - buyPrice), 4)  # amount made/lost
     listNFT = recordProfit.record(name, buyPrice, totalSellPrice)
     listNFT.recordData(profit)
-    option3() 
+    option3()
+
 
 def option2():
     collection = input("Please type the URL of the collection: ")
@@ -23,15 +24,19 @@ def option2():
     print(f"You'll break even at {breakEven} ETH ")
 
 
-
 def option3():
     file1 = open("profits.txt")
     numbers = file1.read()
-    splitnum = numbers.split("\n")  # splits the file every time it ends a line (makes it a list)
+    splitNum = numbers.split("\n")  # splits the file every time it ends a line (makes it a list)
+    queue = []
+    for i in range(len(splitNum)):
+        queue.append(splitNum[i].split(":"))    #splits the list at the : so it seperates the number value
+
+    str(queue)
     addedETH = 0
-    for i in range(len(splitnum)):
-        x = splitnum[i].split(":")  # splits the list so it seperates the project name from the profit you made
-        addedETH += float(x[1])  # adds the profit together
+    for i in range(len(queue)):
+        addedETH += float(queue[i][1])    #gets the number value
+
     print(f"Total Profit in Etherium: {round(addedETH, 4)}")
     ethToUSD = cc.get_price('ETH', currency='USD')  # gets current price of etherium
     temp = ethToUSD.values()  # gets a dictionary of eth in USD

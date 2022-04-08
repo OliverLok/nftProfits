@@ -1,4 +1,5 @@
-import os
+from datetime import date
+
 class record:
     def __init__(self, name, buy, sell):
         self.buy = buy
@@ -11,4 +12,6 @@ class record:
 
     def recordData(self, profit):
         file1 = open('profits.txt', 'a')
-        file1.write(f"\n{self.name}: {profit}")
+        today = date.today()
+        d1 = today.strftime("%m/%d/%y")
+        file1.write(f"\n{d1} - {self.name}: {profit}")
