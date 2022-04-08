@@ -48,11 +48,16 @@ def option3():
     profitUSD = round((addedETH * USD), 2)
     print(f"Total Profit in USD: ${profitUSD}")
 
+def option4():
+    f = open('profits.txt', 'r')
+    print(f.read())
+
 
 print("Welcome to my Program. Please choose one of the following: ")
 print("1) Record Profit")
 print("2) How much to break even")
 print("3) Profit List")
+print("4) Raw Data")
 option = input("Please select an option: ")
 if option == "1":
     option1()
@@ -60,3 +65,5 @@ elif option == "2":
     option2()
 elif option == "3":
     option3()
+elif option == "4":
+    option4()
